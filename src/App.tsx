@@ -1,4 +1,3 @@
-import { ArrowForwardIcon } from "@chakra-ui/icons";
 import {
   Box,
   Textarea,
@@ -103,7 +102,7 @@ function App() {
           結果
         </Text>
         <VStack>
-          <HStack fontSize="24px">
+          <HStack fontSize="16px">
             <VStack>
               {participants.map((participant, index) => {
                 return (

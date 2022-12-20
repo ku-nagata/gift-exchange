@@ -1,5 +1,6 @@
 {
-  "name": "gift-exchenge",
+  "name": "gift-exchange",
+  "homepage": "https://ku-nagata.github.io/gift-exchange/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -25,7 +26,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "rm": "rm -rf docs",
+    "mv": "mv build docs",
+    "git": "git add . && git commit && git push origin master",
+    "deploy": "yarn rm && yarn build && yarn mv && yarn git"
   },
   "eslintConfig": {
     "extends": [
