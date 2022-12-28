@@ -15,6 +15,7 @@ function App() {
   const [participants, setParticipants] = useState<Array<string>>([]);
   const [shuffledResult, setShuffledResult] = useState<Array<string>>([]);
   const [selfGift, setSelfGift] = useState<boolean>(false);
+  const example = ["太郎", "次郎", "花子", "･･･"];
 
   function shuffledArray(array: Array<string>): Array<string> {
     for (let i = array.length - 1; i >= 0; i--) {
@@ -47,6 +48,7 @@ function App() {
       }
       return tmp;
     }
+    // eslint-disable-next-line no-unreachable
     return [];
   }
 
@@ -77,14 +79,27 @@ function App() {
               />
             </HStack>
           </HStack>
-          <Textarea
-            h="110px"
-            placeholder={`太郎\n次郎\n花子\n...`}
-            onChange={(text) => {
-              const rows = text.target.value.split(/\n/);
-              setParticipants(rows.filter((row) => row !== ""));
-            }}
-          />
+          <Box h="110px">
+            <Box
+              position="absolute"
+              hidden={participants.length !== 0}
+              px="16px"
+              py="8px"
+              color="gray"
+            >
+              {example.map((name, index) => {
+                return <Text>{name}</Text>;
+              })}
+            </Box>
+            <Textarea
+              h="100%"
+              // placeholder={`太郎\n次郎\n花子\n...`}
+              onChange={(text) => {
+                const rows = text.target.value.split(/\n/);
+                setParticipants(rows.filter((row) => row !== ""));
+              }}
+            />
+          </Box>
         </VStack>
         <Button
           colorScheme="green"

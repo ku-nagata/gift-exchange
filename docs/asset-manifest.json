@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/gift-exchange/static/css/main.073c9b0a.css",
-    "main.js": "/gift-exchange/static/js/main.3e42e886.js",
+    "main.js": "/gift-exchange/static/js/main.03518f22.js",
     "index.html": "/gift-exchange/index.html",
     "main.073c9b0a.css.map": "/gift-exchange/static/css/main.073c9b0a.css.map",
-    "main.3e42e886.js.map": "/gift-exchange/static/js/main.3e42e886.js.map"
+    "main.03518f22.js.map": "/gift-exchange/static/js/main.03518f22.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.3e42e886.js"
+    "static/js/main.03518f22.js"
   ]
 }
