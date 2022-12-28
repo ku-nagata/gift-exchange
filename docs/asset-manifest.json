@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gift-exchange/static/css/main.466e1811.css",
-    "main.js": "/gift-exchange/static/js/main.c7d035a8.js",
+    "main.js": "/gift-exchange/static/js/main.d9d417e2.js",
     "static/media/noto-sans-jp-all-400-normal.woff": "/gift-exchange/static/media/noto-sans-jp-all-400-normal.32e64d9d97b5a91f109e.woff",
     "static/media/noto-sans-jp-6-400-normal.woff2": "/gift-exchange/static/media/noto-sans-jp-6-400-normal.56fd5cdc09ee7418e608.woff2",
     "static/media/noto-sans-jp-5-400-normal.woff2": "/gift-exchange/static/media/noto-sans-jp-5-400-normal.3e5bacf30e90030adf7c.woff2",
@@ -125,10 +125,10 @@
     "static/media/noto-sans-jp-117-400-normal.woff2": "/gift-exchange/static/media/noto-sans-jp-117-400-normal.aa4358872611a7833e43.woff2",
     "index.html": "/gift-exchange/index.html",
     "main.466e1811.css.map": "/gift-exchange/static/css/main.466e1811.css.map",
-    "main.c7d035a8.js.map": "/gift-exchange/static/js/main.c7d035a8.js.map"
+    "main.d9d417e2.js.map": "/gift-exchange/static/js/main.d9d417e2.js.map"
   },
   "entrypoints": [
     "static/css/main.466e1811.css",
-    "static/js/main.c7d035a8.js"
+    "static/js/main.d9d417e2.js"
   ]
 }

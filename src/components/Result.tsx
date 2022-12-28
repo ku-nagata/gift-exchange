@@ -13,13 +13,11 @@ export const Result = (props: {
       <VStack>
         <HStack fontSize="16px">
           <VStack>
-            {props.originals.map((original, index) => {
-              return (
-                <HStack key={index}>
-                  <Text>{original}</Text>
-                </HStack>
-              );
-            })}
+            {props.originals.map((original, index) => (
+              <Text key={index} h="24px">
+                {original}
+              </Text>
+            ))}
           </VStack>
           <VStack>
             {props.originals.map((_, index) => (
@@ -27,9 +25,11 @@ export const Result = (props: {
             ))}
           </VStack>
           <VStack>
-            {props.results.map((result, index) => {
-              return <Text key={index}>{result}</Text>;
-            })}
+            {props.results.map((result, index) => (
+              <Text key={index} h="24px">
+                {result}
+              </Text>
+            ))}
           </VStack>
         </HStack>
       </VStack>

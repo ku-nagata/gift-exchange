@@ -10,13 +10,22 @@ import { SelfGiftToggle } from "./components/SelfGiftToggle";
 function App() {
   const [isSelfGift, setIsSelfGift] = useState<boolean>(false);
   const [participants, setParticipants] = useState<Array<string>>([]);
-  const [isShuffling, setIsShuffling] = useState<boolean>(false);
-  const [intervalId, setIntervalId] = useState<NodeJS.Timer>();
   const [shuffledResult, setShuffledResult] = useState<Array<string>>([]);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timer>();
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleSelfGiftToggle = () => {
+    setIsSelfGift(!isSelfGift);
+    setShuffledResult([]);
+    stopShuffle();
+  };
+
+  const handleTextareaWithPlaceholder = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     const rows = e.target.value.split(/\n/);
     setParticipants(rows.filter((row) => row !== ""));
+    setShuffledResult([]);
+    stopShuffle();
   };
 
   function startShuffle() {
@@ -24,6 +33,7 @@ function App() {
   }
   function stopShuffle() {
     clearInterval(intervalId);
+    setIntervalId(undefined);
   }
   function updateShuffle() {
     setShuffledResult(shuffled(participants.slice(), isSelfGift));
@@ -37,23 +47,22 @@ function App() {
           <HStack align="end">
             <Text align="left">参加者</Text>
             <Spacer />
-            <SelfGiftToggle onChange={() => setIsSelfGift(!isSelfGift)} />
+            <SelfGiftToggle onChange={() => handleSelfGiftToggle()} />
           </HStack>
           <TextareaWithPlaceholder
             input={participants}
-            onChange={(e) => handleChange(e)}
+            onChange={(e) => handleTextareaWithPlaceholder(e)}
           />
         </VStack>
         <Button
           w="150px"
-          colorScheme="green"
+          colorScheme={intervalId === undefined ? "green" : "red"}
           disabled={participants.length <= 1}
           onClick={() => {
-            isShuffling ? stopShuffle() : startShuffle();
-            setIsShuffling(!isShuffling);
+            intervalId === undefined ? startShuffle() : stopShuffle();
           }}
         >
-          {isShuffling ? "ストップ" : "抽選スタート"}
+          {intervalId === undefined ? "抽選スタート" : "ストップ"}
         </Button>
       </VStack>
       <Result originals={participants} results={shuffledResult} />
