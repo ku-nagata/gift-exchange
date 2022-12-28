@@ -1,4 +1,4 @@
-import { Box, VStack, Text, Button, HStack, Spacer } from "@chakra-ui/react";
+import { VStack, Text, Button, HStack, Spacer } from "@chakra-ui/react";
 import React, { useState } from "react";
 import "./App.css";
 import { Header } from "./components/Header";
@@ -8,8 +8,10 @@ import { TextareaWithPlaceholder } from "./components/TextareaWithPlaceholder";
 import { SelfGiftToggle } from "./components/SelfGiftToggle";
 
 function App() {
-  const [selfGift, setSelfGift] = useState<boolean>(false);
+  const [isSelfGift, setIsSelfGift] = useState<boolean>(false);
   const [participants, setParticipants] = useState<Array<string>>([]);
+  const [isShuffling, setIsShuffling] = useState<boolean>(false);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timer>();
   const [shuffledResult, setShuffledResult] = useState<Array<string>>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -17,15 +19,25 @@ function App() {
     setParticipants(rows.filter((row) => row !== ""));
   };
 
+  function startShuffle() {
+    setIntervalId(setInterval(() => updateShuffle(), 50));
+  }
+  function stopShuffle() {
+    clearInterval(intervalId);
+  }
+  function updateShuffle() {
+    setShuffledResult(shuffled(participants.slice(), isSelfGift));
+  }
+
   return (
     <>
       <Header />
-      <VStack px="20px" pt="8px" mb="50px">
-        <VStack align="left" w="100%" maxWidth="300px">
+      <VStack px="20px" mt="16px" mb="36px">
+        <VStack align="left" w="100%" maxWidth="300px" mb="16px">
           <HStack align="end">
             <Text align="left">参加者</Text>
             <Spacer />
-            <SelfGiftToggle onChange={() => setSelfGift(!selfGift)} />
+            <SelfGiftToggle onChange={() => setIsSelfGift(!isSelfGift)} />
           </HStack>
           <TextareaWithPlaceholder
             input={participants}
@@ -33,13 +45,15 @@ function App() {
           />
         </VStack>
         <Button
+          w="150px"
           colorScheme="green"
           disabled={participants.length <= 1}
           onClick={() => {
-            setShuffledResult(shuffled(participants.slice(), selfGift));
+            isShuffling ? stopShuffle() : startShuffle();
+            setIsShuffling(!isShuffling);
           }}
         >
-          シャッフル
+          {isShuffling ? "ストップ" : "抽選スタート"}
         </Button>
       </VStack>
       <Result originals={participants} results={shuffledResult} />

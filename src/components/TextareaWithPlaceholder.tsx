@@ -16,7 +16,7 @@ export const TextareaWithPlaceholder = (props: {
         color="gray.400"
       >
         {inputExample.map((name, index) => {
-          return <Text>{name}</Text>;
+          return <Text key={index}>{name}</Text>;
         })}
       </Box>
       <Textarea
