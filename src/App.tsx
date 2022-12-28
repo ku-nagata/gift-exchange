@@ -15,7 +15,7 @@ function App() {
   const [participants, setParticipants] = useState<Array<string>>([]);
   const [shuffledResult, setShuffledResult] = useState<Array<string>>([]);
   const [selfGift, setSelfGift] = useState<boolean>(false);
-  const example = ["太郎", "次郎", "花子", "･･･"];
+  const inputExample = ["太郎", "次郎", "花子", "･･･"];
 
   function shuffledArray(array: Array<string>): Array<string> {
     for (let i = array.length - 1; i >= 0; i--) {
@@ -53,9 +53,11 @@ function App() {
   }
 
   return (
-    <Box w="100vw" h="100vh" px="20px" pb="50px">
-      <VStack>
+    <Box w="100vw">
+      <Box h="64px">
         <Text
+          position="fixed"
+          top={0}
           w="100vw"
           py="8px"
           align="center"
@@ -66,6 +68,8 @@ function App() {
         >
           プレゼント🎁交換
         </Text>
+      </Box>
+      <VStack px="20px">
         <Box h="8px" />
         <VStack align="left" w="100%" maxWidth="300px">
           <HStack align="end">
@@ -87,7 +91,7 @@ function App() {
               py="8px"
               color="gray"
             >
-              {example.map((name, index) => {
+              {inputExample.map((name, index) => {
                 return <Text>{name}</Text>;
               })}
             </Box>

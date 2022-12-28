@@ -3,16 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+import "@fontsource/noto-sans-jp";
 
-const colors = {
-  brand: {
-    900: "#1a365d",
-    800: "#153e75",
-    700: "#2a69ac",
-  },
+const fonts = {
+  heading: `"Noto Sans JP", noto-sans-jp`,
+  body: `"Noto Sans JP", noto-sans-jp`,
 };
 
-const theme = extendTheme({ colors });
+const theme = extendTheme({ fonts });
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
