@@ -6,6 +6,7 @@ export const Header = () => {
     <Box h="64px">
       <Text
         position="fixed"
+        zIndex="banner"
         top={0}
         w="100vw"
         py="8px"
